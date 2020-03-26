@@ -1,0 +1,1 @@
+rsync -avrP --exclude-from 'rsync_exclude-list.txt' /mnt/c/Users/xyche/Documents/MATLAB/APET_matlab xinyi@192.168.1.43:/media/xinyi/LABDESK_2TB/APET/APET_matlab
