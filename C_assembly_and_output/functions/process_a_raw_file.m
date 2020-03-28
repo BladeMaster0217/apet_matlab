@@ -3,8 +3,8 @@ function LORs_output = process_a_raw_file(filename_f)
 %   Detailed explanation goes here
 load(filename_f)
 %% Decode a detector
-[gpos_A,e_A,pID_A,cID_global_A,t_A,em_A] = panelProcessor(coincidence_data(1:16,:));
-[gpos_B,e_B,pID_B,cID_global_B,t_B,em_B] = panelProcessor(coincidence_data(17:32,:));
+[gpos_A,e_A,pID_A,cID_global_A,t_A,em_A] = panelProcessor(coincidence_data_pool(1:16,:));
+[gpos_B,e_B,pID_B,cID_global_B,t_B,em_B] = panelProcessor(coincidence_data_pool(17:32,:));
 
 idx_p = pID_A == 4 | pID_B == 4;
 

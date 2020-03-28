@@ -13,17 +13,15 @@ for ii_panel = 1:12
     xy_data_pool = event_xy(:,idx_panel);
     
     
-    
-    
-    if ii_panel == 4
-        tmp = xy_data_pool(2,:);
-        idx = tmp>0;
-        tmp_2 = tmp;
-        tmp_2(idx) = tmp(idx)-16;
-        tmp_2(~idx) = tmp(~idx)+16;
-        
-        xy_data_pool(2,:) = -tmp_2;
-    end
+%     if ii_panel == 4
+%         tmp = xy_data_pool(2,:);
+%         idx = tmp>0;
+%         tmp_2 = tmp;
+%         tmp_2(idx) = tmp(idx)-16;
+%         tmp_2(~idx) = tmp(~idx)+16;
+%         
+%         xy_data_pool(2,:) = -tmp_2;
+%     end
     
     
     LUT_struct = LUT_struct_all_panels{ii_panel};

@@ -10,8 +10,11 @@ cID_global = cID + (pID-1)*900;
 
 [Ay, Ax] = CrystalID2LocalPosition(cID);
 
-Ax = Ax + rand(size(Ax))-0.5;
-Ay = Ay + rand(size(Ay))-0.5;
+% Ax = Ax + (rand(size(Ax))-0.5);
+% Ay = Ay + (rand(size(Ay))-0.5);
+
+Ax = Ax + (randn(size(Ax))) * 0.1;
+Ay = Ay + (randn(size(Ay))) * 0.1;
 
 rratio = point3s_local_raw(3,:);
 [Az] = rratio2DOI_LUT(pID,cID,rratio);

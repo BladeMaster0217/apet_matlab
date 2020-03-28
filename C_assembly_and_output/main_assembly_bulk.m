@@ -1,18 +1,19 @@
 clc
 filepath = '/mnt/NetDisks/Xinyi_Server/A-PET/experimental data/03-15-2020 point_source_3d/4x4x4';
 filepath = 'D:\APET_DATA\03-15-2020 point_source_3d\4x4x4';
-
+filepath = '/media/xinyi/LABDESK_2TB/APET/APET_DATA/';
+filepath = '/media/xinyi/LABDESK_2TB/APET/APET_DATA/02-19-2020 ultramicro phantom/ultramicro_high_activity/';
 %% Prepare paths
 path_raw = fullfile(filepath,'raw');
-path_processed = fullfile(filepath,'processed');
+path_processed = fullfile(filepath,'processed_rndn=0.1');
 if ~exist(path_processed,'dir')
     mkdir(path_processed);
 end
 
 %% Bulk process
-parfor ii_file = 1:7497
+parfor ii_file = 1:300
     ii_file
-    filename = sprintf('exp_%d.mat',ii_file);
+    filename = sprintf('exp_%dhmin.mat',ii_file);
     filename_f = fullfile(path_raw,filename);
     LORs_output = process_a_raw_file(filename_f);
     
@@ -50,7 +51,7 @@ end
 
 fileID = fopen(filename_f,'w');
 
-for ii_file = 1:7497
+for ii_file = 1:300
     ii_file
     filename = sprintf('exp_processed_%d.mat',ii_file);
     filename_f = fullfile(path_processed,filename);
@@ -61,19 +62,18 @@ for ii_file = 1:7497
 end
 fclose(fileID);
 
-%%
+%% Random input and output
 
 listmode_filename = 'output.blst';
 filename_f = fullfile(path_processed,listmode_filename);
 
-%% Random input and output
 fid = fopen(filename_f,'r');
-LORs_input = fread(fid,'float');
+LORs_input = single(fread(fid,'float'));
 fclose(fid);
 
 %%
 listmode_filename = 'output_rand.blst';
-filename_f = fullfile(path_processed,listmode_filename);
+ofilename = fullfile(path_processed,listmode_filename);
 if exist(ofilename,'file')
     delete(ofilename)
 end
@@ -105,6 +105,6 @@ ofilename = fullfile(path_processed,listmode_filename);
 if exist(ofilename,'file')
     delete(ofilename)
 end
-fid = fopen(ofilename,'w');
+fileID = fopen(ofilename,'w');
 fwrite(fileID,LORs_output,'float');
 fclose(fileID);

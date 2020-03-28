@@ -7,7 +7,7 @@ switch(computer_name)
     case 'XC-OPTIPLEX9020'
         BASE_PATH = 'C:\Users\xyche\Documents\MATLAB\APET_matlab';
     case 'xinyi-OptiPlex-7060'
-        BASE_PATH = '/mnt/NetDisks/Xinyi_Server/A-PET/rawdata_processing/matlab2';
+        BASE_PATH = '/media/xinyi/LABDESK_2TB/APET/APET_matlab';
     otherwise
         disp('Cannot identify current computer.')
 end
